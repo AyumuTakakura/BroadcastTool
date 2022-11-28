@@ -25,8 +25,17 @@ namespace BroadcastTool
         {
             InitializeComponent();
 
-            //将来的に複数の言語に対応するためのもの
-            //LanguageBainder.textBinding(BroadcastTool.Language.English, this);
+            LanguageBainder.textBinding(BroadcastTool.Language.English, this);
+        }
+
+        /// <summary>
+        /// Connect/Disconnectボタンを押したとき
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -6,13 +6,62 @@
         xmlns:local="clr-namespace:BroadcastTool"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="700">
-    
-    <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="{Binding File}">
-                
-            </MenuItem>
-        </Menu>
-    </DockPanel>
-    
+
+    <TabControl>
+        <TabItem Header="Operations">
+            <DockPanel Background="#FFE5E5E5">
+                <Button Content="Button" HorizontalAlignment="Left" Margin="51,30,0,0" VerticalAlignment="Top" Height="64" Width="112"/>
+
+            </DockPanel>
+        </TabItem>
+
+        <TabItem Header="Settings">
+            <DockPanel Background="#FFE5E5E5">
+
+                <Grid x:Name="grdConnection" DockPanel.Dock="Top" Height="30" Margin="5,5,5,5" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label x:Name="lblServerIP" Content="ServerIP:Port : " Grid.Column="0"/>
+                        <TextBox x:Name="txtServerIP" Text="ws://127.0.0.1:4455" Margin="10,0,0,0" FontSize="14" Height="25" Grid.Column="1"/>
+                    </Grid>
+
+                    <Grid Grid.Column="1" Margin="10,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label x:Name="lblPassword" Content="Password : " Grid.Column="0"/>
+                        <PasswordBox x:Name="pswPassword" Margin="10,0,0,0" FontSize="14" Height="25" Grid.Column="1"/>
+                    </Grid>
+
+                    <Button Grid.Column="2" Margin="8,3,8,3" Content="Connect" Click="Button_Click"/>
+                </Grid>
+
+
+            </DockPanel>
+        </TabItem>
+    </TabControl>
+
+
+
 </Window>

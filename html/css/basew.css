@@ -1,0 +1,74 @@
+@font-face {
+	font-family: 'Warhelios_Bold';
+	src: url(./Warhelios_Bold.ttf);
+}
+
+body {
+	font-family: Warhelios_Bold;	
+}
+
+body *{
+	position: absolute;
+}
+
+.default{
+	font-size: 3.8vw;
+	color: #141122;
+	width: 12%;
+}
+
+.mapname{
+	font-size: 3.8vw;
+	color: #141122;
+	width: 60%;
+}
+
+.mt_left{
+	font-size: 2.4vw;
+	color: white;
+	width: 8%;
+	left: 3.5%;
+	/* border: medium dashed green; */
+}
+
+.mt_vs{
+	font-size: 2.4vw;
+	color: white;
+	width: 2%;
+	left: 12%;
+}
+
+.mt_right{
+	font-size: 2.4vw;
+	color: white;
+	width: 8%;
+	left: 14.5%;
+	text-align: right;
+}
+
+.mt_1{
+	top:55.2%;
+}
+
+.mt_2{
+	top:61.5%;
+}
+
+.mt_3{
+	top:67.8%;
+}
+
+.mt_4{
+	top:74.1%;
+}
+
+.mt_5{
+	top:80.4%;
+}
+
+#room {
+	font-size: 3vw;
+	color: white;
+	top:45%;
+	left:9%;
+}

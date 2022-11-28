@@ -18,7 +18,8 @@ namespace BroadcastTool
         /// <param name="main"></param>
         public static void textBinding(Language language, MainWindow main)
         {
-            //main.DataContext = new { File = Directory.GetParent(Assembly.GetEntryAssembly().Location) };
+            //Menu
+            //main.DataContext = new { Menu_File = "File" };
         }
 
         /// <summary>

@@ -1,0 +1,18 @@
+@font-face {
+	font-family: 'Warhelios_Bold';
+	src: url(./Warhelios_Bold.ttf);
+}
+
+body {
+	font-family: Warhelios_Bold;	
+}
+
+body *{
+	position: absolute;
+}
+
+body *.default{
+	font-size: 3.5vw;
+	color: #141122;
+	width: 12%;
+}
