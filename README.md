@@ -1,4 +1,8 @@
 # BroadcastTool
+[Japanese](./README-JP.md)
+
+# Requirement
+This tool requires that it be used with an aspect ratio of 16:9.  
 
 # Used Librarys
 ## obs-websocket-dotnet
@@ -13,4 +17,4 @@ Lisence: [MIT License](https://github.com/aaubry/YamlDotNet/blob/master/LICENSE.
 Lisence-lib: [nearly MIT License](https://github.com/aaubry/YamlDotNet/blob/master/LICENSE-libyaml)  
 
 ## AngleSharp
-まだつかってない
+not yet use

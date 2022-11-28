@@ -1,0 +1,9 @@
+@font-face {
+	font-family: 'Warhelios_Bold';
+	src: url(./Warhelios_Bold.ttf);
+}
+
+body {
+	font-family: Warhelios_Bold;
+	font-size: 3.8vw;
+}
