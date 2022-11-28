@@ -2,7 +2,13 @@
 [Japanese](./README-JP.md)
 
 # Requirement
-This tool requires that it be used with an aspect ratio of 16:9.  
+## System
+- .NET 6.0
+  -  If you are using Windows 10or11 you can use it as is.
+
+## OBS
+- Need [OBS-WebSocket Plugin](https://github.com/obsproject/obs-websocket/releases).
+- This tool requires that it be used with an aspect ratio of 16:9.  
 
 # Used Librarys
 ## obs-websocket-dotnet
