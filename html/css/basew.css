@@ -11,9 +11,16 @@ body *{
 	position: absolute;
 }
 
-body *.default{
+.default{
 	font-size: 3.8vw;
 	color: #141122;
+	width: 12%;
+}
+
+.mapname{
+	font-size: 3.8vw;
+	color: #141122;
+	width: 60%;
 }
 
 .mt_left{
