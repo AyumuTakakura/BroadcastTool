@@ -69,5 +69,10 @@ namespace BroadcastTool
             BindingExpression be = rdoWinnerA.GetBindingExpression(RadioButton.IsCheckedProperty);
             be.UpdateTarget();  
         }
+
+        private void btnButtleApply_Click(object sender, RoutedEventArgs e)
+        {
+            ButtleTab.ApplyToHTML(this);
+        }
     }
 }

@@ -40,6 +40,20 @@ namespace BroadcastTool.DataClass
             return detail;
         }
 
+        public string GetTeamFromMt(int mtNum, bool isAlpha)
+        {
+            var teams = RoomCsv.GetKeyList();
+
+            if (isAlpha)
+            {
+                return GetAlpha(teams[mtNum - 1]);
+            }
+            else
+            {
+                return GetBravo(teams[mtNum-1]);
+            }
+        }
+
         public string[] GetRoomArray() => RoomCsv.GetLoadKeyArray();
         
 

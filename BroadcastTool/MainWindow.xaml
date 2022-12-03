@@ -68,7 +68,7 @@
                             <Border BorderBrush="Black" BorderThickness="0.2" Grid.Column="1" Margin="0,0,0,0">
                                 <TextBlock x:Name="txtRoomDetails" Margin="3,3,3,3" Text="Room Inf"/>
                             </Border>
-                            <Button x:Name="btnButtleApply" Grid.Column="2" DockPanel.Dock="Right" VerticalAlignment="Bottom" MinHeight="30" Content="Apply" Margin="5,5,5,5"/>
+                            <Button x:Name="btnButtleApply" Grid.Column="2" DockPanel.Dock="Right" VerticalAlignment="Bottom" MinHeight="30" Content="Apply to HTML" Margin="5,5,5,5" Click="btnButtleApply_Click"/>
                         </Grid>
                     </GroupBox>
 
