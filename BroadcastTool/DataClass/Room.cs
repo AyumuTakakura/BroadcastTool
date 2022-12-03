@@ -10,32 +10,38 @@ namespace BroadcastTool.DataClass
     internal class Room
     {
         public string Name { get; }
-        JdmCsvDictionary Buttle { get; }
+        JdmCsvDictionary RoomCsv { get; }
 
         public Room(string roomName)
         {
             Name = roomName;
-            Buttle = new JdmCsvDictionary(MainWindow.RunningPath + HardCording.RoomCsvPath_Suffix, roomName);
+            RoomCsv = new JdmCsvDictionary(MainWindow.RunningPath + HardCording.RoomCsvPath_Suffix, roomName);
         }
 
-        public string getAlpha(string key)
-        {
-            return Buttle.GetCsvtDictionary()[key]
+        public string GetAlpha(string key) => RoomCsv.GetValue(key)
                 .Split(HardCording.RoomSplitChar)
                 .First();
-        }
+        
 
-        public string getBravo(string key)
-        {
-            return Buttle.GetCsvtDictionary()[key]
+        public string GetBravo(string key) => RoomCsv.GetValue(key)
                 .Split(HardCording.RoomSplitChar)
                 .Last();
+
+        public string GetButtle(string key) => GetAlpha(key) + " vs " + GetBravo(key);
+        
+
+        public string GetDetailText()
+        {
+            var detail = Name;
+            foreach (string k in RoomCsv.GetKeyList())
+            {
+                detail += "\r\n" + GetButtle(k);
+            }
+            return detail;
         }
 
-        public string[] GetRoomArray()
-        {
-            return Buttle.GetLoadKeyArray();
-        }
+        public string[] GetRoomArray() => RoomCsv.GetLoadKeyArray();
+        
 
     }
 }

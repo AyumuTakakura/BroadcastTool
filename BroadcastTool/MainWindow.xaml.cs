@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BroadcastTool.Initializer;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace BroadcastTool
         {
             InitializeComponent();
 
+            ButtleTab.Initialize(this);
         }
 
     }

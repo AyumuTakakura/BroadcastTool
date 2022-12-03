@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BroadcastTool", "BroadcastTool\BroadcastTool.csproj", "{041DC294-A69E-4C11-A4AC-92DF157F97EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BroadcastTool", "BroadcastTool\BroadcastTool.csproj", "{041DC294-A69E-4C11-A4AC-92DF157F97EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resource", "resource", "{47265BA0-52BB-4220-B167-4A5E6C187BEF}"
+	ProjectSection(SolutionItems) = preProject
+		Rooms.csv = Rooms.csv
+		Template.csv = Template.csv
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

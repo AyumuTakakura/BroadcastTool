@@ -12,6 +12,6 @@ namespace BroadcastTool
 
         public const string RoomCsvPath_Suffix = "\\csv\\Rooms.csv";
         public const string MapFolderPath_Suffix = "\\html\\maps";
-        public const string TeamIconFolderPath_Suffix = "\\html\\team?icon";
+        public const string TeamIconFolderPath_Suffix = "\\html\\team_icon";
     }
 }
