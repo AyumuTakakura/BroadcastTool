@@ -151,11 +151,12 @@ namespace BroadcastTool.Initializer
             }
             var map = WowsMap.findMap(mapList, mw.cmbMaps.SelectedValue.ToString());
             waitingHtmlText = ReplaceHTMLText(waitingHtmlText, HardCording.MapNameID, map.MapName);  //MapName
-            waitingHtmlText = ReplaceHTMLImageSource(waitingHtmlText, HardCording.MapImageID, map.ImageFileName);  //MapSource
+            waitingHtmlText = ReplaceHTMLImageSource(waitingHtmlText, HardCording.MapImageID, HardCording.MapImagePathPrefix + map.ImageFileName);  //MapSource
             File.WriteAllText(MainWindow.RunningPath + HardCording.WaitingHtmlPath_Suffix, waitingHtmlText);
             
 
             //winner.html
+
 
         }
 

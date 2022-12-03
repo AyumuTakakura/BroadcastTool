@@ -24,7 +24,7 @@ namespace BroadcastTool
         public const string MapNameID = "MapName";
         public const string MapImageID = "MapImage";
 
-        public const string MapImagePathPrefix = "./maps/";
+        public const string MapImagePathPrefix = "maps/";
 
         public static string GetMTID(int i, bool isAlpha)
         {
