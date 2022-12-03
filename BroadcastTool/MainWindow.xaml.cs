@@ -61,13 +61,15 @@ namespace BroadcastTool
             vm.WinnerB = "False";
             BindingExpression be = rdoWinnerB.GetBindingExpression(RadioButton.IsCheckedProperty);
             be.UpdateTarget();
+            ButtleTab.SetWinner(this);
         }
 
         private void rdoWinnerB_Checked(object sender, RoutedEventArgs e)
         {
             vm.WinnerA = "False";
             BindingExpression be = rdoWinnerA.GetBindingExpression(RadioButton.IsCheckedProperty);
-            be.UpdateTarget();  
+            be.UpdateTarget();
+            ButtleTab.SetWinner(this);
         }
 
         private void btnButtleApply_Click(object sender, RoutedEventArgs e)

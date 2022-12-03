@@ -20,6 +20,7 @@ namespace BroadcastTool.Initializer
         private static List<WowsMap> mapList;
         private static List<Team> teamList;
         private static Room room;
+        private static Team winnerTeam;
 
         /// <summary>
         /// プログラムの実行ディレクトリを記憶し、
@@ -68,6 +69,8 @@ namespace BroadcastTool.Initializer
             LoadTeamA(mw);
             LoadTeamB(mw);
 
+            //Winnerにチェックが入っているほうを記録
+            SetWinner(mw);
 
             //Roomのcomboboxの設定
             mw.cmbRoomName.ItemsSource = JdmCsvDictionary.GetLoadKeyArray(roomCsvPath);
@@ -125,6 +128,18 @@ namespace BroadcastTool.Initializer
             if (room != null) mw.txtRoomDetails.Text = room.GetDetailText();
         }
 
+        public static void SetWinner(MainWindow mw)
+        {
+            if (mw.rdoWinnerA.IsChecked.Value)
+            {
+                winnerTeam = Team.findTeam(teamList, mw.cmbTeamA.SelectedValue.ToString());
+            }
+            else
+            {
+                winnerTeam = Team.findTeam(teamList, mw.cmbTeamB.SelectedValue.ToString());
+            }
+        }
+
         /// <summary>
         /// HTMLへ適応する. 対象ファイルは以下
         /// game.html
@@ -136,28 +151,61 @@ namespace BroadcastTool.Initializer
         {
             //game.html
             var gameHtmlText = File.ReadAllText(MainWindow.RunningPath + HardCording.GameHtmlPath_Suffix);
-            gameHtmlText = ReplaceHTMLText(gameHtmlText, HardCording.TeamAlphaID, mw.cmbTeamA.SelectedValue.ToString());  //TeamAlpha Relpace
-            gameHtmlText = ReplaceHTMLText(gameHtmlText, HardCording.TeamBravoID, mw.cmbTeamB.SelectedValue.ToString());  //TeamBravo Relpace
+            gameHtmlText = ReplaceHTMLTeamName(gameHtmlText, HardCording.TeamAlphaID, mw.cmbTeamA.SelectedValue.ToString());  //TeamAlpha Relpace
+            gameHtmlText = ReplaceHTMLTeamName(gameHtmlText, HardCording.TeamBravoID, mw.cmbTeamB.SelectedValue.ToString());  //TeamBravo Relpace
             File.WriteAllText(MainWindow.RunningPath + HardCording.GameHtmlPath_Suffix, gameHtmlText);
 
             //waiting.html
             var waitingHtmlText = File.ReadAllText(MainWindow.RunningPath + HardCording.WaitingHtmlPath_Suffix);
-            waitingHtmlText = ReplaceHTMLText(waitingHtmlText, HardCording.TeamAlphaID, mw.cmbTeamA.SelectedValue.ToString());  //TeamAlpha Relpace
-            waitingHtmlText = ReplaceHTMLText(waitingHtmlText, HardCording.TeamBravoID, mw.cmbTeamB.SelectedValue.ToString());  //TeamBravo Relpace
+            waitingHtmlText = ReplaceHTMLTeamName(waitingHtmlText, HardCording.TeamAlphaID, mw.cmbTeamA.SelectedValue.ToString());  //TeamAlpha Relpace
+            waitingHtmlText = ReplaceHTMLTeamName(waitingHtmlText, HardCording.TeamBravoID, mw.cmbTeamB.SelectedValue.ToString());  //TeamBravo Relpace
+            waitingHtmlText = ReplaceHTMLText(waitingHtmlText, HardCording.RoomID, mw.cmbRoomName.SelectedValue.ToString());    //Room Name
             for(int i=1; i<=5; i++)
             {
-                waitingHtmlText = ReplaceHTMLText(waitingHtmlText, HardCording.GetMTID(i, true), room.GetTeamFromMt(i, true));  //Room Alpha
-                waitingHtmlText = ReplaceHTMLText(waitingHtmlText, HardCording.GetMTID(i, false), room.GetTeamFromMt(i, false));//Room Bravo
+                waitingHtmlText = ReplaceHTMLTeamName(waitingHtmlText, HardCording.GetMTID(i, true), room.GetTeamFromMt(i, true));  //Room Alpha
+                waitingHtmlText = ReplaceHTMLTeamName(waitingHtmlText, HardCording.GetMTID(i, false), room.GetTeamFromMt(i, false));//Room Bravo
             }
             var map = WowsMap.findMap(mapList, mw.cmbMaps.SelectedValue.ToString());
             waitingHtmlText = ReplaceHTMLText(waitingHtmlText, HardCording.MapNameID, map.MapName);  //MapName
             waitingHtmlText = ReplaceHTMLImageSource(waitingHtmlText, HardCording.MapImageID, HardCording.MapImagePathPrefix + map.ImageFileName);  //MapSource
             File.WriteAllText(MainWindow.RunningPath + HardCording.WaitingHtmlPath_Suffix, waitingHtmlText);
-            
 
             //winner.html
+            var winnerHtmlText = File.ReadAllText(MainWindow.RunningPath + HardCording.WinnerHtmlPath_Suffix);
+            winnerHtmlText = ReplaceHTMLTeamName(winnerHtmlText, HardCording.TeamAlphaID, mw.cmbTeamA.SelectedValue.ToString());  //TeamAlpha Relpace
+            winnerHtmlText = ReplaceHTMLTeamName(winnerHtmlText, HardCording.TeamBravoID, mw.cmbTeamB.SelectedValue.ToString());  //TeamBravo Relpace
+            winnerHtmlText = ReplaceHTMLText(winnerHtmlText, HardCording.RoomID, mw.cmbRoomName.SelectedValue.ToString());    //Room Name
+            for (int i=1; i<=5; i++)
+            {
+                winnerHtmlText = ReplaceHTMLTeamName(winnerHtmlText, HardCording.GetMTID(i, true), room.GetTeamFromMt(i, true));  //Room Alpha
+                winnerHtmlText = ReplaceHTMLTeamName(winnerHtmlText, HardCording.GetMTID(i, false), room.GetTeamFromMt(i, false));//Room Bravo
+            }
+            winnerHtmlText = ReplaceHTMLTeamName(winnerHtmlText, HardCording.WinnerTeamID, winnerTeam.Name); //Winner TeamName
+            winnerHtmlText = ReplaceHTMLImageSource(winnerHtmlText, HardCording.WinnerLogoID, HardCording.TeamLogoPathPrefix + winnerTeam.ImageFileName);  //Team Logo
+            File.WriteAllText(MainWindow.RunningPath + HardCording.WinnerHtmlPath_Suffix, winnerHtmlText);
 
+        }
 
+        /// <summary>
+        /// HTML上でのIDをもとに、そのパラメータ(Text)を変更する
+        /// 例：ReplaceHTMLText("neko", "CAT");
+        /// 置き換え前：＜p id='neko'＞[NYANKO]＜/p＞
+        /// 置き換え後：＜p id='neko'＞[NEKO]＜/p＞
+        /// 
+        /// htmlへの要請として必ずidパラメータは最後に記述していること.
+        /// htmlはシングルクォートでくくられていること.
+        /// また、(htmlの書き方的に当たり前ではあるが)idはhtmlの中でユニーク(唯一、ほかで使用されていない)なものであること
+        /// </summary>
+        /// <param name="htmlText">HTMLのテキスト全文</param>
+        /// <param name="idText">HTMLのID</param>
+        /// <param name="Text">置き換えた後のText</param>
+        static string ReplaceHTMLTeamName(string htmlText, string id, string Text)
+        {
+            var before = "id='" + id + "'>.{2,7}</p>";
+            var after = "id='" + id + "'>[" + Text + "]</p>";
+            var result = Regex.Replace(htmlText, before, after);
+
+            return result;
         }
 
         /// <summary>
@@ -175,8 +223,8 @@ namespace BroadcastTool.Initializer
         /// <param name="Text">置き換えた後のText</param>
         static string ReplaceHTMLText(string htmlText, string id, string Text)
         {
-            var before = "id='" + id + "'>.{2,7}</p>";
-            var after = "id='" + id + "'>[" + Text + "]</p>";
+            var before = "id='" + id + "'>.*</p>";
+            var after = "id='" + id + "'>" + Text + "</p>";
             var result = Regex.Replace(htmlText, before, after);
 
             return result;

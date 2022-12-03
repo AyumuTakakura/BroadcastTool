@@ -10,15 +10,16 @@ namespace BroadcastTool.DataClass
     internal class Team
     {
         public string Name { get; }
+        public string ImageFileName { get; }
         public string ImagePath { get; }
 
         public Team(string imagePath)
         {
             ImagePath = imagePath;
-            Name = imagePath.Replace(Directory.GetParent(imagePath).FullName, "")
+            ImageFileName = imagePath.Replace(Directory.GetParent(imagePath).FullName, "").Replace("\\", "");
+            Name = ImageFileName
                 .Split(".")
-                .First()
-                .Replace("\\", "");
+                .First();
         }
 
         /// <summary>

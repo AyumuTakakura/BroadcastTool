@@ -23,8 +23,12 @@ namespace BroadcastTool
         public const string TeamBravoID = "TeamBravo";
         public const string MapNameID = "MapName";
         public const string MapImageID = "MapImage";
+        public const string WinnerLogoID = "WinnerLogo";
+        public const string WinnerTeamID = "WinnerTeam";
+        public const string RoomID = "room";
 
         public const string MapImagePathPrefix = "maps/";
+        public const string TeamLogoPathPrefix = "team_icon/";
 
         public static string GetMTID(int i, bool isAlpha)
         {
