@@ -14,18 +14,20 @@ namespace BroadcastTool.DataClass
         public string Rule { get; }
         public string NameWithRule { get; }
         public string ImagePath { get; }
+        public string ImageFileName { get; }
 
 
         public WowsMap(string mapPath)
         {
             ImagePath = mapPath;
+            ImageFileName = mapPath.Replace(Directory.GetParent(mapPath).FullName, "").Replace("\\", "");
 
-            var srcNames = mapPath.Replace(Directory.GetParent(mapPath).FullName, "")
+            var srcNames = ImageFileName
                 .Split(".")
                 .First()
                 .Split("_");
 
-            MapName = LanguageBainder.MapNameTranslate(srcNames.First().Replace("\\", ""));
+            MapName = LanguageBainder.MapNameTranslate(srcNames.First());
             Rule = LanguageBainder.MapRuleTranslate(srcNames.Last());
             NameWithRule = MapName + " " + Rule;
         }

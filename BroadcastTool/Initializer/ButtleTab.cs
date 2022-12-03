@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BroadcastTool.Initializer
 {
@@ -148,8 +149,9 @@ namespace BroadcastTool.Initializer
                 waitingHtmlText = ReplaceHTMLText(waitingHtmlText, HardCording.GetMTID(i, true), room.GetTeamFromMt(i, true));  //Room Alpha
                 waitingHtmlText = ReplaceHTMLText(waitingHtmlText, HardCording.GetMTID(i, false), room.GetTeamFromMt(i, false));//Room Bravo
             }
-            waitingHtmlText = ReplaceHTMLText(waitingHtmlText, HardCording.MapNameID, mw.txtMapName.Text);  //MapName
-            //MapSource
+            var map = WowsMap.findMap(mapList, mw.cmbMaps.SelectedValue.ToString());
+            waitingHtmlText = ReplaceHTMLText(waitingHtmlText, HardCording.MapNameID, map.MapName);  //MapName
+            waitingHtmlText = ReplaceHTMLImageSource(waitingHtmlText, HardCording.MapImageID, map.ImageFileName);  //MapSource
             File.WriteAllText(MainWindow.RunningPath + HardCording.WaitingHtmlPath_Suffix, waitingHtmlText);
             
 
@@ -163,7 +165,8 @@ namespace BroadcastTool.Initializer
         /// 置き換え前：＜p id='neko'＞NYANKO＜/p＞
         /// 置き換え後：＜p id='neko'＞NEKO＜/p＞
         /// 
-        /// htmlへの要請として必ずidパラメータは最後に記述し、htmlはシングルクォートでくくられていること.
+        /// htmlへの要請として必ずidパラメータは最後に記述していること.
+        /// htmlはシングルクォートでくくられていること.
         /// また、(htmlの書き方的に当たり前ではあるが)idはhtmlの中でユニーク(唯一、ほかで使用されていない)なものであること
         /// </summary>
         /// <param name="htmlText">HTMLのテキスト全文</param>
@@ -175,7 +178,29 @@ namespace BroadcastTool.Initializer
             var after = "id='" + id + "'>[" + Text + "]</p>";
             var result = Regex.Replace(htmlText, before, after);
 
-            Debug.WriteLine(result);
+            return result;
+        }
+
+        /// <summary>
+        /// HTML上でのIDをもとに、画像のsrcを書き換える
+        /// 例：ReplaceHTMLText("neko", "CAT");
+        /// 置き換え前：＜p id='neko'＞NYANKO＜/p＞
+        /// 置き換え後：＜p id='neko'＞NEKO＜/p＞
+        /// 
+        /// htmlへの要請として必ずsrcパラメータは最初に記述し、その次にidが来る用になっていること.
+        /// htmlはシングルクォートでくくられていること.
+        /// また、(htmlの書き方的に当たり前ではあるが)idはhtmlの中でユニーク(唯一、ほかで使用されていない)なものであること
+        /// </summary>
+        /// <param name="htmlText">HTMLのテキスト全文</param>
+        /// <param name="id">HTMLのID</param>
+        /// <param name="imageName">置き換えた後のText</param>
+        /// <returns></returns>
+        static string ReplaceHTMLImageSource(string htmlText, string id, string imageName)
+        {
+            var before = "<img src='.*' id='" + id + "'";
+            var after = "<img src='" + imageName + "' id='" + id + "'";
+            var result = Regex.Replace(htmlText, before, after);
+
             return result;
         }
     }

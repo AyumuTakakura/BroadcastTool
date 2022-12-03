@@ -22,6 +22,9 @@ namespace BroadcastTool
         public const string TeamAlphaID = "TeamAlpha";
         public const string TeamBravoID = "TeamBravo";
         public const string MapNameID = "MapName";
+        public const string MapImageID = "MapImage";
+
+        public const string MapImagePathPrefix = "./maps/";
 
         public static string GetMTID(int i, bool isAlpha)
         {
