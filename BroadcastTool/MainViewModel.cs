@@ -10,6 +10,5 @@ namespace BroadcastTool
     {
         public string WinnerA { get; set; } = "True";
         public string WinnerB { get; set; } = "False";
-        public string RoomText { get; set; } = "Room Infomation";
     }
 }

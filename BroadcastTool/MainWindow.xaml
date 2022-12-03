@@ -42,13 +42,13 @@
                                 <Image x:Name="imgTeamA" VerticalAlignment="Top" HorizontalAlignment="Center" Source="testImg/JapanDreamMatch.jpg" Margin="30,10,30,0"/>
                                 <TextBlock x:Name="txtTeamA" Text="TeamA" FontSize="16" TextAlignment="Center" Margin="0,5,0,0"/>
                                 <ComboBox x:Name="cmbTeamA" HorizontalAlignment="Center" Width="auto" MinWidth="120" Margin="0,5,0,0" SelectionChanged="cmbTeamA_SelectionChanged"/>
-                                <RadioButton x:Name="rdoWinnerA" HorizontalAlignment="Center" Content="Winner" Margin="0,5,0,0" IsChecked="True"/>
+                                <RadioButton x:Name="rdoWinnerA" HorizontalAlignment="Center" Content="Winner" Margin="0,5,0,0" IsChecked="{Binding WinnerA, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Checked="rdoWinnerA_Checked"/>
                             </StackPanel>
                             <StackPanel Orientation="Vertical" Margin="5,5,5,5" Grid.Column="1">
                                 <Image x:Name="imgTeamB" VerticalAlignment="Top" HorizontalAlignment="Center" Source="testImg/JapanDreamMatch.jpg" Margin="30,10,30,0"/>
                                 <TextBlock x:Name="txtTeamB" Text="TeamB" FontSize="16" TextAlignment="Center" Margin="0,5,0,0"/>
                                 <ComboBox x:Name="cmbTeamB" HorizontalAlignment="Center" Width="auto" MinWidth="120" Margin="0,5,0,0" SelectionChanged="cmbTeamB_SelectionChanged"/>
-                                <RadioButton x:Name="rdoWinnerB" HorizontalAlignment="Center" Content="Winner" Margin="0,5,0,0" IsChecked="False"/>
+                                <RadioButton x:Name="rdoWinnerB" HorizontalAlignment="Center" Content="Winner" Margin="0,5,0,0" IsChecked="{Binding WinnerB, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Checked="rdoWinnerB_Checked"/>
                             </StackPanel>
                         </Grid>
                     </GroupBox>

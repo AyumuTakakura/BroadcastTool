@@ -24,10 +24,13 @@ namespace BroadcastTool
     public partial class MainWindow : Window
     {
         public static readonly string RunningPath = Directory.GetParent(System.Windows.Forms.Application.ExecutablePath).FullName;
+        MainViewModel vm = new MainViewModel();
 
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = vm;
 
             ButtleTab.Initialize(this);
         }
@@ -51,6 +54,20 @@ namespace BroadcastTool
         {
             ButtleTab.LoadRoom(this);
 
+        }
+
+        private void rdoWinnerA_Checked(object sender, RoutedEventArgs e)
+        {
+            vm.WinnerB = "False";
+            BindingExpression be = rdoWinnerB.GetBindingExpression(RadioButton.IsCheckedProperty);
+            be.UpdateTarget();
+        }
+
+        private void rdoWinnerB_Checked(object sender, RoutedEventArgs e)
+        {
+            vm.WinnerA = "False";
+            BindingExpression be = rdoWinnerA.GetBindingExpression(RadioButton.IsCheckedProperty);
+            be.UpdateTarget();  
         }
     }
 }
