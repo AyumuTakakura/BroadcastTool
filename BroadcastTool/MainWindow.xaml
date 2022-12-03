@@ -5,61 +5,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BroadcastTool"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="700">
+        Icon="https://cdn.discordapp.com/attachments/799115011359768586/1048470440705794048/JapanDreamMatch.jpg"
+        Title="MainWindow" Height="450" Width="700" MinHeight="470" MinWidth="700">
 
     <TabControl>
-        <TabItem Header="Operations">
-            <DockPanel Background="#FFE5E5E5">
-                <Button Content="Button" HorizontalAlignment="Left" Margin="51,30,0,0" VerticalAlignment="Top" Height="64" Width="112"/>
+        <!-- ButtleTab  -->
+        <TabItem Header="Buttle">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
 
-            </DockPanel>
-        </TabItem>
+                <GroupBox Header="Map" Margin="5,5,5,5">
+                    <StackPanel Orientation="Vertical">
+                        <Image x:Name="imgMapImage" VerticalAlignment="Top" HorizontalAlignment="Center" Source="testImg/JapanDreamMatch.jpg" Margin="5,20,5,0"/>
+                        <TextBlock x:Name="txtMapName" Text="MapName" FontSize="16" TextAlignment="Center" Margin="0,20,0,0"/>
+                        <ComboBox x:Name="cmbMaps" HorizontalAlignment="Center" Width="auto" MinWidth="120" Margin="0,20,0,0"/>
+                    </StackPanel>
+                </GroupBox>
 
-        <TabItem Header="Settings">
-            <DockPanel Background="#FFE5E5E5">
-
-                <Grid x:Name="grdConnection" DockPanel.Dock="Top" Height="30" Margin="5,5,5,5" VerticalAlignment="Top">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="100"/>
-                    </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Column="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="90"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                    <GroupBox Header="Team" Margin="5,5,5,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                        <Label x:Name="lblServerIP" Content="ServerIP:Port : " Grid.Column="0"/>
-                        <TextBox x:Name="txtServerIP" Text="ws://127.0.0.1:4455" Margin="10,0,0,0" FontSize="14" Height="25" Grid.Column="1"/>
-                    </Grid>
+                            <StackPanel Orientation="Vertical" Margin="5,5,5,5" >
+                                <Image x:Name="imgTeamA" VerticalAlignment="Top" HorizontalAlignment="Center" Source="testImg/JapanDreamMatch.jpg" Margin="30,10,30,0"/>
+                                <TextBlock x:Name="txtTeamA" Text="TeamA" FontSize="16" TextAlignment="Center" Margin="0,5,0,0"/>
+                                <ComboBox x:Name="cmbTeamA" HorizontalAlignment="Center" Width="auto" MinWidth="120" Margin="0,5,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="5,5,5,5" Grid.Column="1">
+                                <Image x:Name="imgTeamB" VerticalAlignment="Top" HorizontalAlignment="Center" Source="testImg/JapanDreamMatch.jpg" Margin="30,10,30,0"/>
+                                <TextBlock x:Name="txtTeamB" Text="TeamB" FontSize="16" TextAlignment="Center" Margin="0,5,0,0"/>
+                                <ComboBox x:Name="cmbTeamB" HorizontalAlignment="Center" Width="auto" MinWidth="120" Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                    </GroupBox>
 
-                    <Grid Grid.Column="1" Margin="10,0,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="70"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-
-                        <Label x:Name="lblPassword" Content="Password : " Grid.Column="0"/>
-                        <PasswordBox x:Name="pswPassword" Margin="10,0,0,0" FontSize="14" Height="25" Grid.Column="1"/>
-                    </Grid>
-
-                    <Button Grid.Column="2" Margin="8,3,8,3" Content="Connect" Click="Button_Click"/>
                 </Grid>
-
-
-            </DockPanel>
+            </Grid>
         </TabItem>
+
+
+        <!-- FinalResult -->
+        <TabItem Header="FinalResult">
+            
+        </TabItem>
+        
     </TabControl>
 
 
