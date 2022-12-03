@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -21,21 +22,13 @@ namespace BroadcastTool
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static readonly string RunningPath = Directory.GetParent(System.Windows.Forms.Application.ExecutablePath).FullName;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            LanguageBainder.textBinding(BroadcastTool.Language.English, this);
         }
 
-        /// <summary>
-        /// Connect/Disconnectボタンを押したとき
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
