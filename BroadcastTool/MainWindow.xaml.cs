@@ -32,5 +32,25 @@ namespace BroadcastTool
             ButtleTab.Initialize(this);
         }
 
+        private void cmbMaps_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ButtleTab.LoadMap(this);
+        }
+
+        private void cmbTeamA_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ButtleTab.LoadTeamA(this);
+        }
+
+        private void cmbTeamB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ButtleTab.LoadTeamB(this);
+        }
+
+        private void cmbRoomName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ButtleTab.LoadRoom(this);
+
+        }
     }
 }

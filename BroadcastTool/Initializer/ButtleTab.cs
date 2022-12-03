@@ -74,9 +74,6 @@ namespace BroadcastTool.Initializer
             //Roomの設定
             LoadRoom(mw);
 
-            //RoomのTextの設定
-            if(room != null) mw.txtRoomDetails.Text = room.GetDetailText();
-
         }
 
         /// <summary>
@@ -113,10 +110,17 @@ namespace BroadcastTool.Initializer
             mw.imgTeamB.Source = Util.getBitmapImage(team.ImagePath);
         }
 
+        /// <summary>
+        /// Roomをロードすると同時に、テキストの内容も書き換える
+        /// </summary>
+        /// <param name="mw"></param>
         public static void LoadRoom(MainWindow mw)
         {
             if (mw.cmbRoomName.SelectedValue == null) return;
             room = new Room(mw.cmbRoomName.SelectedValue.ToString());
+
+            //RoomのTextの設定
+            if (room != null) mw.txtRoomDetails.Text = room.GetDetailText();
         }
     }
 }
