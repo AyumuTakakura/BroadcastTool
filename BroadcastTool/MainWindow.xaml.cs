@@ -23,6 +23,7 @@ namespace BroadcastTool
     /// </summary>
     public partial class MainWindow : Window
     {
+        bool Initializing = true;
         public static readonly string RunningPath = Directory.GetParent(System.Windows.Forms.Application.ExecutablePath).FullName;
         MainViewModel vm = new MainViewModel();
 
@@ -33,6 +34,7 @@ namespace BroadcastTool
             DataContext = vm;
 
             ButtleTab.Initialize(this);
+            Initializing= false;
         }
 
         private void cmbMaps_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -43,11 +45,13 @@ namespace BroadcastTool
         private void cmbTeamA_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ButtleTab.LoadTeamA(this);
+            if(!Initializing) ButtleTab.SetWinner(this);
         }
 
         private void cmbTeamB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ButtleTab.LoadTeamB(this);
+            if (!Initializing) ButtleTab.SetWinner(this);
         }
 
         private void cmbRoomName_SelectionChanged(object sender, SelectionChangedEventArgs e)
