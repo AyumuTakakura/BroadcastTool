@@ -26,9 +26,18 @@ namespace BroadcastTool
         public const string WinnerLogoID = "WinnerLogo";
         public const string WinnerTeamID = "WinnerTeam";
         public const string RoomID = "room";
+        public const string Winner1stNameID = "1stName";
+        public const string Winner2ndNameID = "2ndName";
+        public const string Winner3rdNameID = "3rdName";
+        public const string Winner1stImageID = "1stImage";
+        public const string Winner2ndImageID = "2ndImage";
+        public const string Winner3rdImageID = "3rdImage";
 
         public const string MapImagePathPrefix = "maps/";
         public const string TeamLogoPathPrefix = "team_icon/";
+
+        public const string LanguageListFilePath = "csv\\LanguageList.txt";
+        public const string MapListFilePath = "csv\\MapList.csv";
 
         public static string GetMTID(int i, bool isAlpha)
         {

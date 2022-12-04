@@ -29,7 +29,8 @@ namespace BroadcastTool.DataClass
             foreach(string line in File.ReadLines(path))
             {
                 var values = line.Split(",")
-                    .Select(s => s.Trim())
+                    .Select(s => s.TrimEnd())
+                    .Select(s => s.TrimStart())
                     .ToList();
 
                 if (++i == 1)

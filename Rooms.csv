@@ -1,3 +1,6 @@
-RoomNum, Buttle1, Buttle2, Buttle3, Buttle4, Buttle5
-Room1, NEKO|INU, VIM|EMACS, A2|ABCDE, POLLO|5QS, HDR|NCETD
-Room2, HARE|AME, YUKI|KAMIN, ASA|YORU, +2|-2, JDTS|BC
+﻿ButtleNum,Room1,Room2
+Buttle1,NEKO|INU,HARE|AME
+Buttle2,VIM|EMACS,YUKI|KAMIN
+Buttle3,A2|ABCDE,ASA|YORU
+Buttle4,POLLO|HGD,+2|-2
+Buttle5,DH|NDGS,JDTS|BC
