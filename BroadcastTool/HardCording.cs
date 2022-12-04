@@ -30,6 +30,9 @@ namespace BroadcastTool
         public const string MapImagePathPrefix = "maps/";
         public const string TeamLogoPathPrefix = "team_icon/";
 
+        public const string LanguageListFilePath = "csv\\LanguageList.txt";
+        public const string MapListFilePath = "csv\\MapList.csv";
+
         public static string GetMTID(int i, bool isAlpha)
         {
             if (isAlpha)

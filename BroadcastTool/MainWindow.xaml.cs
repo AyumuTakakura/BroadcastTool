@@ -1,4 +1,5 @@
 ﻿using BroadcastTool.Initializer;
+using BroadcastTool.Language;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,7 +24,7 @@ namespace BroadcastTool
     /// </summary>
     public partial class MainWindow : Window
     {
-        bool Initializing = true;
+        static bool Initializing = true;
         public static readonly string RunningPath = Directory.GetParent(System.Windows.Forms.Application.ExecutablePath).FullName;
         MainViewModel vm = new MainViewModel();
 
@@ -33,8 +34,19 @@ namespace BroadcastTool
 
             DataContext = vm;
 
-            ButtleTab.Initialize(this);
-            Initializing= false;
+            Initialize(this);
+        }
+
+        public static void Initialize(MainWindow mw)
+        {
+            Initializing = true;
+
+            LanguageBainder.Initialize();
+            ButtleTab.Initialize(mw);
+            SettinsTab.Initialize(mw);
+
+            if(LanguageBainder.isFirstInit) LanguageBainder.isFirstInit= false;
+            Initializing = false;
         }
 
         private void cmbMaps_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -79,6 +91,17 @@ namespace BroadcastTool
         private void btnButtleApply_Click(object sender, RoutedEventArgs e)
         {
             ButtleTab.ApplyToHTML(this);
+        }
+
+        private void cmbMapLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!Initializing)
+            {
+                LanguageBainder.selectedMapLanguage = cmbMapLanguage.SelectedValue.ToString();
+                LanguageBainder.Initialize();
+                Initialize(this);
+                ButtleTab.LoadMap(this);
+            }
         }
     }
 }

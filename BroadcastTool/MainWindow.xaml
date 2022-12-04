@@ -81,7 +81,19 @@
         <TabItem Header="FinalResult">
             
         </TabItem>
-        
+
+
+        <!-- Settings -->
+        <TabItem Header="Settings">
+            <StackPanel Margin="0,100,0,0">
+                <Label Content="Map Language" HorizontalAlignment="Center"/>
+                <ComboBox x:Name="cmbMapLanguage" Width="120" Height="30" SelectionChanged="cmbMapLanguage_SelectionChanged"/>
+                <Label Content="JDM BroadcastTool" HorizontalAlignment="Center" Margin="0,100,0,0"/>
+                <Label Content="Version 0.1.0 (α)" HorizontalAlignment="Center" />
+            </StackPanel>
+            
+        </TabItem>
+
     </TabControl>
 
 

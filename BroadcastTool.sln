@@ -8,7 +8,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resource", "resource", "{47265BA0-52BB-4220-B167-4A5E6C187BEF}"
 	ProjectSection(SolutionItems) = preProject
 		Rooms.csv = Rooms.csv
-		Template.csv = Template.csv
 	EndProjectSection
 EndProject
 Global
