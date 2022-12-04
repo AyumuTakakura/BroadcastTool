@@ -1,13 +1,17 @@
 # BroadcastTool
 [Japanese](./README-JP.md)
 
+# Usage
+- [Japanese](./Document/Usage-JP.md)
+
 # Requirement
 ## System
 - .NET 6.0
   -  If you are using Windows 10or11 you can use it as is.
 
-## OBS
-- Need [OBS-WebSocket Plugin](https://github.com/obsproject/obs-websocket/releases).
+## need OBS Plugin
+- [OBS-WebSocket Plugin](https://github.com/obsproject/obs-websocket/releases).
+  - Now, BroadcastTool is Alpha Version so OBS-WebSocket is NOT NEED.
 - This tool requires that it be used with an aspect ratio of 16:9.  
 
 # Used Librarys
