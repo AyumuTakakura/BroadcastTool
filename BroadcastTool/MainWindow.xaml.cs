@@ -43,11 +43,14 @@ namespace BroadcastTool
 
             LanguageBainder.Initialize();
             ButtleTab.Initialize(mw);
+            FinalResultTab.Initialize(mw);
             SettinsTab.Initialize(mw);
 
             if(LanguageBainder.isFirstInit) LanguageBainder.isFirstInit= false;
             Initializing = false;
         }
+
+        // ---------------- Bullte Tab -------------
 
         private void cmbMaps_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -93,6 +96,30 @@ namespace BroadcastTool
             ButtleTab.ApplyToHTML(this);
         }
 
+        //  ----------- Final Result -------------
+
+        private void cmb1stWinner_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FinalResultTab.Set1stTeamImage(this);
+        }
+
+        private void cmb2ndWinner_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FinalResultTab.Set2ndTeamImage(this);
+        }
+
+        private void cmb3rdWinner_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FinalResultTab.Set3rdTeamImage(this);
+        }
+
+        private void btnWinnerApply_Click(object sender, RoutedEventArgs e)
+        {
+            FinalResultTab.ApplyToWinnerHTML(this);
+        }
+
+        // ----------- Settings --------------
+
         private void cmbMapLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (!Initializing)
@@ -103,5 +130,7 @@ namespace BroadcastTool
                 ButtleTab.LoadMap(this);
             }
         }
+
+
     }
 }

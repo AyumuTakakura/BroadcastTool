@@ -13,11 +13,12 @@
         <TabItem Header="Buttle">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="76*"/>
+                    <ColumnDefinition Width="156*"/>
+                    <ColumnDefinition Width="463*"/>
                 </Grid.ColumnDefinitions>
 
-                <GroupBox Header="Map" Margin="5,5,5,5">
+                <GroupBox Header="Map" Margin="5,5,5,5" Grid.ColumnSpan="2">
                     <StackPanel Orientation="Vertical">
                         <Image x:Name="imgMapImage" VerticalAlignment="Top" HorizontalAlignment="Center" Source="testImg/JapanDreamMatch.jpg" Margin="5,20,5,0"/>
                         <TextBlock x:Name="txtMapName" Text="MapName" FontSize="16" TextAlignment="Center" Margin="0,20,0,0"/>
@@ -25,7 +26,7 @@
                     </StackPanel>
                 </GroupBox>
 
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="1" Grid.ColumnSpan="2" Margin="155,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="*"/>
@@ -79,7 +80,40 @@
 
         <!-- FinalResult -->
         <TabItem Header="FinalResult">
-            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Viewbox Grid.Column="0" Grid.Row="0">
+                    <Label Content="1st"/>
+                </Viewbox>
+                <Viewbox Grid.Column="0" Grid.Row="1">
+                    <Label Content="2nd"/>
+                </Viewbox>
+                <Viewbox Grid.Column="0" Grid.Row="2">
+                    <Label Content="3rd"/>
+                </Viewbox>
+
+                <Image x:Name="img1stTeam" Source="./testImg/JapanDreamMatch.jpg" Grid.Column="1" Grid.Row="0" Margin="0,5,0,5"/>
+                <Image x:Name="img2ndTeam" Source="./testImg/JapanDreamMatch.jpg" Grid.Column="1" Grid.Row="1" Margin="0,5,0,5"/>
+                <Image x:Name="img3rdTeam" Source="./testImg/JapanDreamMatch.jpg" Grid.Column="1" Grid.Row="2" Margin="0,5,0,5"/>
+
+                <ComboBox x:Name="cmb1stWinner" Grid.Column="2" Grid.Row="0" Margin="20,10,20,10" Height="30" SelectionChanged="cmb1stWinner_SelectionChanged" />
+                <ComboBox x:Name="cmb2ndWinner" Grid.Column="2" Grid.Row="1" Margin="20,10,20,10" Height="30" SelectionChanged="cmb2ndWinner_SelectionChanged" />
+                <ComboBox x:Name="cmb3rdWinner" Grid.Column="2" Grid.Row="2" Margin="20,10,20,10" Height="30" SelectionChanged="cmb3rdWinner_SelectionChanged" />
+
+                <Button x:Name="btnWinnerApply" Content="Apply to HTML" Grid.Column="3" Grid.Row="2" Margin="20,0,20,20" Height="30" VerticalAlignment="Bottom" Click="btnWinnerApply_Click" />
+
+            </Grid>
         </TabItem>
 
 
@@ -91,7 +125,7 @@
                 <Label Content="JDM BroadcastTool" HorizontalAlignment="Center" Margin="0,100,0,0"/>
                 <Label Content="Version 0.1.0 (α)" HorizontalAlignment="Center" />
             </StackPanel>
-            
+
         </TabItem>
 
     </TabControl>
