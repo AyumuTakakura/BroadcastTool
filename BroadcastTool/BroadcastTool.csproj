@@ -5,7 +5,12 @@
     <TargetFramework>net6.0-windows7.0</TargetFramework>
     <Nullable>disable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>jdm.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="jdm.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="obs-websocket-dotnet" Version="5.0.0.3" />

@@ -1,8 +1,8 @@
 # BroadcastTool
-[Japanese](./README-JP.md)
+[日本語](./README-JP.md)
 
 # Usage
-- [Japanese](./Document/Usage-JP.md)
+- [日本語](./Document/Usage-JP.md)
 
 # Requirement
 ## System
