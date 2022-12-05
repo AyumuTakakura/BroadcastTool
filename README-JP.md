@@ -6,7 +6,7 @@
 # Requirement
 ## System
 - .NET 6.0
-  -  Windows10/11を使用されている場合は特に何もする必要はありません
+  -  Windows11を使用されている場合は特に何もする必要はありません
 
 ## OBSで必要なプラグイン
 - [OBS-WebSocket Plugin](https://github.com/obsproject/obs-websocket/releases).
